@@ -27,7 +27,7 @@
 
 % article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper,12pt]{article}
-\renewcommand{\baselinestretch}{0.95}
+\renewcommand{\baselinestretch}{0.93}
 %----------------------------------------------------------------------------------------
 %	FONT
 %----------------------------------------------------------------------------------------
@@ -149,6 +149,18 @@
 \href{mailto:nameet.rajore@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ nameet.rajore@gmail.com} \ $|$ \ 
 \href{tel:+918888475692}{\raisebox{-0.05\height}\faMobile \ +91 8888475692} \\
 \end{tabularx}
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Languages & Java, Python, JavaScript, TypeScript SQL, Go \\
+Backend  & Spring Boot, Node.js, REST APIs, CI/CD \\
+Frontend & React, HTML/CSS \\
+Cloud/Databases & AWS S3, Glue, DynamoDB, EC2, AppConfig, MongoDB \\
+Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI \\
+Tools & Git, Docker, Linux \\
+\end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
@@ -162,24 +174,25 @@
 \section{Work Experience}
 
 \begin{joblong}{Amazon - Software Development Engineer}{Dec 2024 - Present}
-\item Enabled marketplace-specific configurations and execution logic in a Tier-1 service, \textbf{cutting engineering effort by ~60\%} 
-\item Increased resilience during peak loads by building a custom rate limiter, preventing outages and driving \textbf{\$2M in additional GMS}
+\item Enabled marketplace-specific configurations and custom execution logic for Amazon Payments Tier-1 service, \textbf{cutting engineering effort by ~60\%} 
+\item Increased resilience during peak loads by building a custom rate limiter for a Tier-1 service, preventing outages and driving \textbf{\$2.5M in additional GMS}
 \item Fast-tracked the expansion of our Installments product for Amazon Business \textbf{from 1 to 5 marketplaces by 12 weeks}.
+\item Restored customer access by backfilling \textbf{150M+ records} using AWS Glue with 0\% errors.
 \end{joblong}
 
-\begin{joblong}{Kinara.ai - Software Engineer}{Jul 2024 - Nov 2024}
+\begin{joblong}{Kinara, Inc. - Software Engineer}{Jul 2024 - Nov 2024}
 \item Optimized LLMs/vLLMs with \textbf{QAT} and \textbf{PTQ}, reducing model size \textbf{up to 4× and inference latency by 30–40\%}. 
 \item Enabled deployment of generative AI models on resource-constrained edge chips while maintaining \textbf{95\% accuracy}.
 \end{joblong}
 
 \begin{joblong}{Samsung R\&D - ML Research Intern}{Jan 2024 - Jun 2024}
 \item Built a pipeline with \textbf{VRAE} to embed UWB timeseries for classification and autofocus distance prediction, which was shipped in \textbf{Samsung S25}.
-\item Prototyped \textbf{DeepCluster}-based unsupervised clustering for unlabelled UWB data.
+\item Prototyped \textbf{DeepCluster-based unsupervised clustering} to extract structure from unlabelled UWB data.
 \end{joblong}
 
 \begin{joblong}{Amazon - Software Development Intern}{Jul 2023 - Dec 2023}
-\item Optimized product page asset management, cutting latency on \textbf{Amazon's Detail Page}.
-\item Strengthened CI/CD pipelines with automated latency-regression checks, preventing performance regressions in production.
+\item Optimized product page asset management for \textbf{Amazon Detail Page}.
+\item Strengthened CI/CD pipeline for Amazon Detail Page by \textbf{2\%} with automated latency-regression checks by parsing response markers in real-time.
 \end{joblong}
 \vspace{-2mm}
 
@@ -218,19 +231,6 @@ Class 10 and Class 12 at \textbf{The Bishop's School} & 2015 -- 2018 \\
 % \nocite{*}
 % \printbibliography[heading=none]
 % \end{refsection}
-
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Languages & Java, Python, JavaScript, SQL, Go \\
-Backend  & Spring Boot, Node.js, REST APIs, CI/CD \\
-Frontend & React, HTML/CSS \\
-Cloud/Databases & AWS (S3, Glue, DynamoDB, EC2), MongoDB \\
-Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI \\
-Tools & Git, Docker, Linux \\
-\end{tabularx}
 
 \vfill
 % \center{\footnotesize Last updated: \today}
