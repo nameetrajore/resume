@@ -26,24 +26,24 @@
 %----------------------------------------------------------------------------------------
 
 % article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,9pt]{article}
 \renewcommand{\baselinestretch}{0.93}
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
 %	FONT
 %----------------------------------------------------------------------------------------
 
 % % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
 
 % % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
+\setmainfont[
+  Path = ./Geist/otf/,
+  BoldFont = Geist-SemiBold.otf,
+  ItalicFont = Geist-Italic.otf,
+  BoldItalicFont = Geist-BoldItalic.otf
+]{Geist-Regular.otf}
+% \setmainfont{Geist}
 %----------------------------------------------------------------------------------------
 %	PACKAGES
 %----------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@
 
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\definecolor{linkcolour}{rgb}{0.2, 0.35, 0.55}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
 \addbibresource{citations.bib}
 \setlength\bibitemsep{1em}
@@ -108,20 +108,40 @@
     {
     }
 
-\newenvironment{joblong}[2]
+\newenvironment{joblong}[3]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} - \textit{#2} & & #3 \\[3.75pt]
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep, leftmargin=1em, itemsep=1pt,label=--]
+    \begin{itemize}[nosep, leftmargin=1em, itemsep=1pt, label=\textbullet]
     }
     {
     \end{itemize}
-    \end{minipage}    
+    \end{minipage}
     }
 
+% Education: Institution, Degree, Date
+\newcommand{\educationitem}[4]{
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & & #3 \\
+    \textit{#2} & & #4 \\[3.75pt]
+    \end{tabularx}
+}
 
+% Project: Name, Tech Stack, Date
+\newenvironment{project}[3]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} - \textit{#2} && #3 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, leftmargin=1em, itemsep=1pt, label=\textbullet]
+    }
+    {
+    \end{itemize}
+    \end{minipage}
+    }
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -151,15 +171,12 @@
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Languages & Java, Python, JavaScript, TypeScript, SQL, Go, C++ \\
-Backend  & Spring Boot, Node.js, REST APIs, CI/CD \\
-Frontend & React, HTML/CSS \\
-Cloud/Databases & AWS S3, Bedrock, Step Functions, Glue, DynamoDB, EC2, AppConfig, Neptune \\
-Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI, Model Context Protocol \\
-\end{tabularx}
 
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\educationitem{Birla Institure of Technology and Science, Pilani}{B.E. Computer Science + M.Sc. Physics}{2019 - 2024}{CGPA: 8.5}
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
@@ -171,7 +188,7 @@ Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI, Model Con
 %Experience
 \section{Work Experience}
 
-\begin{joblong}{Amazon - Software Development Engineer}{Dec 2024 - Present}
+\begin{joblong}{Amazon}{Software Development Engineer}{Dec 2024 - Present}
 \item Enabled marketplace-specific configurations and custom execution logic for Amazon Payments Tier-1 service, \textbf{cutting engineering effort by 50\%} for new marketplaces.
 \item Increased resilience during peak loads by building a custom rate limiter for a Tier-1 service, preventing outages and driving \textbf{\$2.5M in additional GMS}.
 \item Fast-tracked the expansion of our Installments product for Amazon Business \textbf{from 1 to 5 marketplaces by 12 weeks}.
@@ -179,17 +196,17 @@ Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI, Model Con
 \item Built an internal \textbf{Gen-AI} productivity platform using \textbf{GraphRAG} on Bedrock and \textbf{MCP Servers}, reducing new partner launch time by \textbf{25\%}.
 \end{joblong}
 
-\begin{joblong}{Kinara, Inc. - Software Engineer}{Jul 2024 - Nov 2024}
+\begin{joblong}{Kinara, Inc.}{Software Engineer}{Jul 2024 - Nov 2024}
 \item Optimized LLMs/vLLMs with \textbf{QAT} and \textbf{PTQ}, reducing model size \textbf{up to 4× and inference latency by 30–40\%}. 
 \item Enabled deployment of generative AI models on resource-constrained edge chips while maintaining \textbf{95\% accuracy}.
 \end{joblong}
 
-\begin{joblong}{Samsung R\&D - ML Research Intern}{Jan 2024 - Jun 2024}
+\begin{joblong}{Samsung R\&D}{ML Research Intern}{Jan 2024 - Jun 2024}
 \item Built a pipeline with \textbf{VRAE} to embed Ultra-wideband timeseries for classification and autofocus distance prediction, which was shipped in \textbf{Samsung S25}.
 \item Prototyped \textbf{DeepCluster-based unsupervised clustering} to extract structure from unlabelled Ultra-wideband data.
 \end{joblong}
 
-\begin{joblong}{Amazon - Software Development Intern}{Jul 2023 - Dec 2023}
+\begin{joblong}{Amazon}{Software Development Intern}{Jul 2023 - Dec 2023}
 \item Optimized product page asset management for \textbf{Amazon Detail Page}.
 \item Strengthened CI/CD pipeline for Amazon Detail Page by \textbf{2\%} with automated latency-regression checks by parsing response markers in real-time.
 \end{joblong}
@@ -197,27 +214,34 @@ Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI, Model Con
 %Projects
 \section{Projects}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{2BRented} & \hfill \href{https://github.com/nameetrajore/2BRented}{Github} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{Rental platform for 2-wheelers with customer/owner/manager roles, using \textbf{AWS S3} for storage, \textbf{MongoDB Atlas}, and \textbf{Razorpay} for payments. Tech: React, Node.js, MongoDB, AWS, Razorpay API} \\
+\begin{project}{2BRented}{Full Stack Web App}{\href{https://github.com/nameetrajore/2BRented}{Github}}
+  \item Rental platform for 2-wheelers with customer, owner, and manager roles; built with \textbf{React 18}, \textbf{Redux}, \textbf{Node.js}, \textbf{Supabase}, \textbf{AWS S3}, and \textbf{Razorpay}
+\end{project}
+
+\begin{project}{Monke Interpreter}{Compiler Design}{\href{https://github.com/nameetrajore/monke-interpreter}{Github}}
+  \item Built a tree-walking interpreter in \textbf{Go} with a REPL, implementing all stages from scratch: \textbf{lexer}, \textbf{parser}, \textbf{AST}, and \textbf{evaluator} with support for closures and dynamic typing
+\end{project}
+
+\begin{project}{Hyperquicksort}{Parallel Computing}{\href{https://github.com/nameetrajore/hyperquicksort-openmp}{Github}}
+  \item Implemented \textbf{hypercube quicksort} in \textbf{C} using \textbf{OpenMP}, achieving \textbf{5--8$\times$} speedup over sequential quicksort via parallel local sorting and \textbf{log(n)} inter-thread merge rounds
+\end{project}
+
+\begin{project}{LALR: Lipschitz Adaptive Learning Rate}{Machine Learning}{\href{https://github.com/nameetrajore/Linear_Regression-and-Quantile_Regression-Using-LALR}{Github}}
+  \item Validated an adaptive learning rate framework in \textbf{TensorFlow} and derived the \textbf{Lipschitz constant} for Huber Loss, achieving \textbf{5--20$\times$} faster convergence over constant learning rate across 3 datasets
+\end{project}
+
+\begin{project}{Path Finding Visualiser}{Data Structures and Algorithms}{\href{https://github.com/nameetrajore/path-finding-visualiser}{Github}}
+  \item Interactive visualiser for 5 pathfinding algorithms (Dijkstra, A*, BFS, DFS) and maze generators built with \textbf{React 18} and \textbf{Redux Toolkit};
+\end{project}
+
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Languages & Java, Python, JavaScript, TypeScript, SQL, Go, C++ \\
+Backend  & Spring Boot, Node.js, REST APIs, CI/CD \\
+Frontend & React, HTML/CSS \\
+Cloud/Databases & AWS S3, Bedrock, Step Functions, Glue, DynamoDB, EC2, AppConfig, Neptune \\
+Machine Learning & PyTorch, Hugging Face, Model Quantization, Edge AI, Model Context Protocol \\
 \end{tabularx}
-\vspace{-2mm}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Monke Interpreter} & \hfill \href{https://github.com/nameetrajore/monke-interpreter}{Github} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{Built a language interpreter in \textbf{Go} with a REPL, supporting variables, expressions, statements, and functions. Tech: Go, Compiler Design} \\
-\end{tabularx}
-\vspace{-2mm}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\section{Education}
-\begin{tabularx}{\linewidth}{@{}X r@{}}
-\textbf{B.E. Computer Science + M.Sc. Physics} at \textbf{BITS Pilani} - CGPA: 8.4 & 2019 -- 2024 \\
-\end{tabularx}
-
-
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
